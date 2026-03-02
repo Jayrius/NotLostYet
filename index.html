@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>I like buttons</title>
+    <style>
+        body {
+            text-align: center;
+            font-family: Arial, sans-serif;
+            background-color: #f4f4f4;
+            margin: 0;
+            padding: 20px;
+        }
+
+        h1 {
+            margin-bottom: 30px;
+        }
+
+        .button-container {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(120px, 1fr));
+            gap: 10px;
+        }
+
+        button {
+            padding: 15px;
+            border: none;
+            color: white;
+            font-size: 14px;
+            cursor: pointer;
+            border-radius: 8px;
+            transition: transform 0.1s ease;
+        }
+
+        button:hover {
+            transform: scale(1.05);
+        }
+    </style>
+</head>
+<body>
+
+    <h1 id="title">Click the buttons</h1>
+
+    <div class="button-container" id="buttons"></div>
+
+    <script>
+        const hiddenMessages = [
+            "Click the one below",
+            "Click the one above",
+            "Click the one to the right",
+            "Click the one to the left",
+            "Click the other way",
+            "No not this one",
+            "Definitely not that one",
+            "Try again",
+            "Wrong direction",
+            "Almost there",
+            "Click something else",
+            "That was unexpected",
+            "You found this one",
+            "Keep going",
+            "Why this one?",
+            "That wasn't it",
+            "Interesting choice",
+            "You're getting warmer",
+            "Or colder...",
+            "Press another one"
+        ];
+
+        function randomColor() {
+            const r = Math.floor(Math.random() * 200);
+            const g = Math.floor(Math.random() * 200);
+            const b = Math.floor(Math.random() * 200);
+            return `rgb(${r}, ${g}, ${b})`;
+        }
+
+        function randomMessage() {
+            return hiddenMessages[Math.floor(Math.random() * hiddenMessages.length)];
+        }
+
+        function createButtons() {
+            const container = document.getElementById("buttons");
+
+            for (let i = 0; i < 132; i++) {
+                const btn = document.createElement("button");
+                btn.style.backgroundColor = randomColor();
+                
+                if (i != 68) {
+                    btn.textContent = "Click me";
+                    btn.onclick = function () {
+                        document.getElementById("title").textContent = randomMessage();
+                    };
+                } else {
+                    btn.onclick = function () {
+                        btn.textContent = "";
+                        document.getElementById("title").textContent = "I don't know how you found this...";
+                    };
+                }
+                container.appendChild(btn);
+            }
+        }
+
+        createButtons();
+    </script>
+
+</body>
+</html>
