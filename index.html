@@ -84,7 +84,7 @@
                 const btn = document.createElement("button");
                 btn.style.backgroundColor = randomColor();
                 
-                if (i != 68) {
+                if (i != Math.random() * 131) {
                     btn.textContent = "Click me";
                     btn.onclick = function () {
                         document.getElementById("title").textContent = randomMessage();
@@ -92,7 +92,7 @@
                 } else {
                     btn.textContent = "Click me";
                     btn.onclick = function () {
-                        document.getElementById("title").textContent = "I don't know how you found this...";
+                        window.location.reload();
                     };
                 }
                 container.appendChild(btn);
